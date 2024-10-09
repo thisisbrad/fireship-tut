@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 
+console.log("ENV", process.env.SPOTIFY_CLIENT_ID);
+
 export const authOptions = {
   // Configure one or more authentication providers
   providers: [
@@ -10,6 +12,8 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  secret: process.env.NEXTAUTH_SECRET, // Add this line
 };
 
-export default NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
