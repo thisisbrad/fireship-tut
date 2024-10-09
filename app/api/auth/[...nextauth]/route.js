@@ -1,3 +1,6 @@
+// import { handlers } from "auth";
+// export const { GET, POST } = handlers;
+
 import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 
