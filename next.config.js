@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["scontent-iad3-1.xx.fbcdn.net"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.fbcdn.net", // This covers all subdomains of fbcdn.net
+        port: "", // Empty string means any port
+        pathname: "/v/**", // This pattern matches any URL path that starts with "/v/"
+      },
+    ],
   },
 };
 
