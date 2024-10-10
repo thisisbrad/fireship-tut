@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
+import { Prisma } from "@prisma/client"; // this is the trigger
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 console.log("ENV", process.env.SPOTIFY_CLIENT_ID);
 
@@ -13,6 +15,7 @@ export const authOptions = {
     // ...add more providers here
   ],
   secret: process.env.NEXTAUTH_SECRET, // Add this line
+  adapter: PrismaAdapter(Prisma),
 };
 
 const handler = NextAuth(authOptions);
